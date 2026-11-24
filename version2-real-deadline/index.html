@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore how deadline pressure, distractions, and focus change the way procrastination feels.">
+  <title>Procrastination Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">A small experiment</p>
+      <h1>Procrastination Simulator</h1>
+      <p>Change the inputs. See how the moment feels.</p>
+    </header>
+
+    <form aria-label="Simulator inputs">
+      <div class="control">
+        <div class="label-row"><span class="control-title">Deadline</span></div>
+        <div class="deadline-field">
+          <label for="task">Task</label>
+          <input type="text" id="task" placeholder="What do you need to finish?" maxlength="200">
+        </div>
+        <div class="deadline-field">
+          <label for="deadline">Deadline date and time</label>
+          <input type="datetime-local" id="deadline" aria-describedby="deadline-hint">
+        </div>
+        <p class="hint" id="deadline-hint">Uses your device’s local time.</p>
+        <div class="deadline-summary" role="status" aria-live="polite" aria-atomic="true">
+          <strong id="deadline-label">Choose a deadline</strong>
+          <p id="time-left">Time remaining will appear here.</p>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="label-row"><label for="distractions">Distractions</label><span id="distractions-label" class="value">Low</span></div>
+        <label class="choice" for="distractions"><input type="checkbox" id="distractions"> High distractions</label>
+        <p class="hint">Unchecked means low distractions.</p>
+      </div>
+
+      <fieldset class="control">
+        <legend>Focus</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="focus" value="low" checked> Low</label>
+          <label class="choice"><input type="radio" name="focus" value="high"> High</label>
+        </div>
+      </fieldset>
+    </form>
+
+    <section class="result" role="status" aria-live="polite" aria-atomic="true" aria-labelledby="state-name">
+      <p class="eyebrow">Current state</p>
+      <h2 id="state-name">Waiting for a deadline</h2>
+      <p id="state-message">Enter a task and choose its deadline to see how the moment feels.</p>
+    </section>
+    <footer>Five states. Three inputs. Updates as you go.</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore how deadline pressure, distractions, and focus change the way procrastination feels.">
+  <title>Procrastination Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">A small experiment</p>
+      <h1>Procrastination Simulator</h1>
+      <p>Change the inputs. See how the moment feels.</p>
+    </header>
+
+    <form aria-label="Simulator inputs">
+      <div class="control">
+        <div class="label-row"><span class="control-title">Deadline</span></div>
+        <div class="deadline-field">
+          <label for="task">Task</label>
+          <input type="text" id="task" placeholder="What do you need to finish?" maxlength="200">
+        </div>
+        <div class="deadline-field">
+          <label for="deadline">Deadline date and time</label>
+          <input type="datetime-local" id="deadline" aria-describedby="deadline-hint">
+        </div>
+        <p class="hint" id="deadline-hint">Uses your device’s local time.</p>
+        <div class="deadline-summary" role="status" aria-live="polite" aria-atomic="true">
+          <strong id="deadline-label">Choose a deadline</strong>
+          <p id="time-left">Time remaining will appear here.</p>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="label-row" role="status" aria-live="polite"><span class="control-title">Distractions</span><span id="distractions-label" class="value">Low</span></div>
+        <p class="hint">Based on your recent check-ins.</p>
+        <p class="hint" id="check-in-history">No check-ins yet. Starts Low; 2 distraction choices in the latest 3 set it to High.</p>
+        <button type="button" id="test-check-in">Test check-in</button>
+        <p class="hint" id="reminder-hint">Add a task and deadline to start automatic check-ins while this page is open.</p>
+        <p class="hint">Check-ins are kept for this visit only.</p>
+        <section id="check-in" class="check-in" aria-labelledby="check-in-question" hidden>
+          <h3 id="check-in-question" tabindex="-1">What are you doing right now?</h3>
+          <div class="check-in-choices">
+            <button type="button" data-activity="Working">Working</button>
+            <button type="button" data-activity="Check phone">Check phone</button>
+            <button type="button" data-activity="Watch one video">Watch one video</button>
+            <button type="button" data-activity="Get a snack">Get a snack</button>
+          </div>
+        </section>
+      </div>
+
+      <fieldset class="control">
+        <legend>Focus</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="focus" value="low" checked> Low</label>
+          <label class="choice"><input type="radio" name="focus" value="high"> High</label>
+        </div>
+      </fieldset>
+    </form>
+
+    <section class="result" role="status" aria-live="polite" aria-atomic="true" aria-labelledby="state-name">
+      <p class="eyebrow">Current state</p>
+      <h2 id="state-name">Waiting for a deadline</h2>
+      <p id="state-message">Enter a task and choose its deadline to see how the moment feels.</p>
+    </section>
+    <aside class="future-extension" aria-labelledby="mobile-reminder-title">
+      <h2 id="mobile-reminder-title">Mobile Reminder Concept</h2>
+      <p>A future version could connect to phone alarms or notifications. As the deadline gets closer, reminders would arrive more often, asking “What are you doing right now?”</p>
+      <p>For now, <strong>Test check-in</strong> previews that interaction on this page.</p>
+    </aside>
+    <footer>Five states. Three inputs. Updates as you go.</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore how deadline pressure, distractions, and focus change the way procrastination feels.">
+  <title>Procrastination Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">A small experiment</p>
+      <h1>Procrastination Simulator</h1>
+      <p>Change the inputs. See how the moment feels.</p>
+    </header>
+
+    <form aria-label="Simulator inputs">
+      <div class="control">
+        <div class="label-row">
+          <label for="deadline">Deadline</label>
+          <output id="deadline-label" for="deadline">Far away</output>
+        </div>
+        <input type="range" id="deadline" min="0" max="100" value="25" step="1" aria-describedby="deadline-hint" aria-valuetext="Far away">
+        <div class="range-labels" aria-hidden="true"><span>Far away</span><span>Coming soon</span></div>
+        <p class="hint" id="deadline-hint">Below 50: far away. 50 and above: coming soon.</p>
+      </div>
+
+      <div class="control">
+        <div class="label-row"><label for="distractions">Distractions</label><span id="distractions-label" class="value">Low</span></div>
+        <label class="choice" for="distractions"><input type="checkbox" id="distractions"> High distractions</label>
+        <p class="hint">Unchecked means low distractions.</p>
+      </div>
+
+      <fieldset class="control">
+        <legend>Focus</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="focus" value="low" checked> Low</label>
+          <label class="choice"><input type="radio" name="focus" value="high"> High</label>
+        </div>
+      </fieldset>
+    </form>
+
+    <section class="result" role="status" aria-live="polite" aria-atomic="true" aria-labelledby="state-name">
+      <p class="eyebrow">Current state</p>
+      <h2 id="state-name">Calm</h2>
+      <p id="state-message">There’s time, and things feel under control.</p>
+    </section>
+    <footer>Five states. Three inputs. Updates as you go.</footer>
+  </main>
+</body>
+</html>
